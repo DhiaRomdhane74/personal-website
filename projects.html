@@ -1,0 +1,528 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 80 80'><rect x='10' y='10' width='8' height='20' rx='2' fill='%231a1a1a'/><rect x='10' y='10' width='20' height='8' rx='2' fill='%231a1a1a'/><rect x='10' y='50' width='8' height='20' rx='2' fill='%231a1a1a'/><rect x='10' y='62' width='20' height='8' rx='2' fill='%231a1a1a'/><rect x='62' y='10' width='8' height='20' rx='2' fill='%231a1a1a'/><rect x='50' y='10' width='20' height='8' rx='2' fill='%231a1a1a'/><rect x='62' y='50' width='8' height='20' rx='2' fill='%231a1a1a'/><rect x='50' y='62' width='20' height='8' rx='2' fill='%231a1a1a'/><text x='40' y='48' text-anchor='middle' font-family='Georgia,serif' font-size='26' font-weight='700' fill='%231a1a1a'>DR</text></svg>">
+  <title>Projects | Dhia</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    * { color: #000000 !important; }
+
+    :root {
+      --bg:     #fdf6ec;
+      --border: rgba(0, 0, 0, 0.1);
+      --font:   'Inter', sans-serif;
+    }
+
+    html, body {
+      font-family: var(--font);
+      background-color: var(--bg);
+      min-height: 100vh;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    body { padding-top: 84px; }
+
+    /* ── Nav ──────────────────────────────────────────────── */
+    .topnav {
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      z-index: 1000;
+      display: flex;
+      justify-content: flex-end;
+      align-items: center;
+      gap: 2.5rem;
+      padding: 1.25rem 3rem;
+      background: #fdf6ec;
+    }
+
+    .topnav__link {
+      font-size: 0.875rem;
+      font-weight: 500;
+      text-decoration: none;
+      letter-spacing: 0.01em;
+      opacity: 0.45;
+      transition: opacity 0.15s ease;
+    }
+
+    .topnav__link:hover { opacity: 1; }
+
+    .topnav__link--active,
+    nav a.active {
+      opacity: 1;
+      font-weight: 700;
+      text-decoration: underline;
+      text-underline-offset: 4px;
+      text-decoration-thickness: 1.5px;
+    }
+
+    /* ── Page layout ──────────────────────────────────────── */
+    .projects-section {
+      max-width: 960px;
+      margin: 0 auto;
+      padding: 3rem 1.5rem 5rem;
+    }
+
+    .projects-section__heading {
+      font-size: 2.5rem;
+      font-weight: 700;
+      letter-spacing: -0.03em;
+      margin-bottom: 2rem;
+      padding-bottom: 1rem;
+      border-bottom: 1.5px solid rgba(0, 0, 0, 0.1);
+    }
+
+    /* ── Grid ─────────────────────────────────────────────── */
+    .project-cards {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 1.25rem;
+    }
+
+    /* ── Card ─────────────────────────────────────────────── */
+    .project-card {
+      background: rgba(255, 255, 255, 0.55);
+      border: 1px solid var(--border);
+      border-radius: 14px;
+      overflow: hidden;
+      display: flex;
+      flex-direction: column;
+      box-shadow: 0 2px 8px rgba(0, 0, 0, 0.06);
+      transition: box-shadow 0.2s ease;
+    }
+
+    .project-card:hover {
+      box-shadow: 0 4px 18px rgba(0, 0, 0, 0.1);
+    }
+
+    /* ── Slider ───────────────────────────────────────────── */
+    .slider {
+      position: relative;
+      overflow: hidden;
+      background: #f0ece4;
+      cursor: pointer;
+    }
+
+    .slider__track {
+      display: flex;
+      transition: transform 0.35s ease;
+    }
+
+    .slider__img {
+      min-width: 100%;
+      width: 100%;
+      height: auto;
+      object-fit: contain;
+      display: block;
+      flex-shrink: 0;
+    }
+
+    .slider__btn {
+      position: absolute;
+      top: 50%;
+      transform: translateY(-50%);
+      background: rgba(255, 255, 255, 0.82);
+      border: 1px solid rgba(0, 0, 0, 0.12);
+      border-radius: 50%;
+      width: 30px;
+      height: 30px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+      z-index: 2;
+      transition: background 0.15s ease;
+      padding: 0;
+    }
+
+    .slider__btn:hover { background: rgba(255, 255, 255, 0.97); }
+
+    .slider__btn--prev { left: 10px; }
+    .slider__btn--next { right: 10px; }
+
+    .slider__btn svg { display: block; }
+
+    .slider__dots {
+      position: absolute;
+      bottom: 8px;
+      left: 50%;
+      transform: translateX(-50%);
+      display: flex;
+      gap: 5px;
+      z-index: 2;
+    }
+
+    .slider__dot {
+      width: 6px;
+      height: 6px;
+      border-radius: 50%;
+      background: rgba(0, 0, 0, 0.25);
+      cursor: pointer;
+      transition: background 0.15s ease;
+    }
+
+    .slider__dot--active { background: rgba(0, 0, 0, 0.75); }
+
+    /* ── Card body ────────────────────────────────────────── */
+    .card__body {
+      padding: 1.25rem 1.375rem 1.375rem;
+      display: flex;
+      flex-direction: column;
+      gap: 0.625rem;
+      flex: 1;
+    }
+
+    .card__title {
+      font-size: 0.9375rem;
+      font-weight: 700;
+      letter-spacing: -0.01em;
+      line-height: 1.35;
+    }
+
+    .card__desc {
+      font-size: 0.8375rem;
+      font-weight: 400;
+      line-height: 1.65;
+      opacity: 0.72;
+      flex: 1;
+    }
+
+    /* ── Tags ─────────────────────────────────────────────── */
+    .card__tags {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.35rem;
+      margin-top: 0.25rem;
+    }
+
+    .tag {
+      padding: 0.25rem 0.6rem;
+      background: rgba(0, 0, 0, 0.05);
+      border: 1px solid rgba(0, 0, 0, 0.1);
+      border-radius: 100px;
+      font-size: 0.72rem;
+      font-weight: 500;
+      white-space: nowrap;
+    }
+
+    /* ── Lightbox ─────────────────────────────────────────── */
+    .lightbox {
+      display: none;
+      position: fixed;
+      inset: 0;
+      background: rgba(0, 0, 0, 0.85);
+      z-index: 1000;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .lightbox.is-open { display: flex; }
+
+    .lightbox__img {
+      max-width: 90vw;
+      max-height: 90vh;
+      object-fit: contain;
+      border-radius: 6px;
+    }
+
+    .lightbox__close {
+      position: absolute;
+      top: 1rem;
+      right: 1rem;
+      background: rgba(255, 255, 255, 0.12);
+      border: 1px solid rgba(255, 255, 255, 0.22);
+      border-radius: 50%;
+      width: 38px;
+      height: 38px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+      font-size: 1.375rem;
+      line-height: 1;
+      color: #ffffff !important;
+      transition: background 0.15s ease;
+    }
+
+    .lightbox__close:hover { background: rgba(255, 255, 255, 0.22); }
+
+    /* ── Responsive ───────────────────────────────────────── */
+    @media (max-width: 640px) {
+      .topnav { padding: 1rem 1.25rem; gap: 1.5rem; }
+      .project-cards { grid-template-columns: 1fr; }
+    }
+
+    #page-content { opacity: 0; transition: opacity 0.3s ease; }
+  </style>
+</head>
+<body>
+
+<nav class="topnav">
+  <a href="index.html" style="margin-right:auto;flex-shrink:0;display:block;">
+  <svg width="44" height="44" viewBox="0 0 80 80">
+    <rect x="10" y="10" width="8" height="20" rx="2" fill="#1a1a1a"/>
+    <rect x="10" y="10" width="20" height="8" rx="2" fill="#1a1a1a"/>
+    <rect x="10" y="50" width="8" height="20" rx="2" fill="#1a1a1a"/>
+    <rect x="10" y="62" width="20" height="8" rx="2" fill="#1a1a1a"/>
+    <rect x="62" y="10" width="8" height="20" rx="2" fill="#1a1a1a"/>
+    <rect x="50" y="10" width="20" height="8" rx="2" fill="#1a1a1a"/>
+    <rect x="62" y="50" width="8" height="20" rx="2" fill="#1a1a1a"/>
+    <rect x="50" y="62" width="20" height="8" rx="2" fill="#1a1a1a"/>
+    <text x="40" y="48" text-anchor="middle" font-family="Georgia, serif" font-size="26" font-weight="700" fill="#1a1a1a">DR</text>
+  </svg>
+  </a>
+  <a href="index.html" class="topnav__link">Home</a>
+  <a href="experience.html" class="topnav__link">Experience</a>
+  <a href="projects.html" class="topnav__link topnav__link--active active">Projects</a>
+  <a href="skills.html" class="topnav__link">Skills</a>
+</nav>
+
+<div id="page-content">
+<section class="projects-section">
+  <h1 class="projects-section__heading">Projects</h1>
+
+  <div class="project-cards">
+
+    <!-- 1 · Renewable Energy -->
+    <div class="project-card">
+      <div class="slider" data-index="0">
+        <div class="slider__track">
+          <img class="slider__img" src="public/projects/renewable-energy.png" alt="Renewable Energy project" />
+        </div>
+      </div>
+      <div class="card__body">
+        <p class="card__title">Predicting Renewable Energy Potential in Europe with PySpark on AWS EMR</p>
+        <p class="card__desc">Designed and executed a large-scale distributed data engineering pipeline using PySpark on Amazon EMR to process the NASA POWER climate dataset (Europe subset). Transformed raw climate data into partitioned Parquet format, trained a cloud-phase classification model with Spark MLlib to predict solar energy potential, performed SQL-based analysis via Amazon Athena, and monitored cluster performance with Amazon CloudWatch.</p>
+        <div class="card__tags">
+          <span class="tag">PySpark</span>
+          <span class="tag">Amazon EMR</span>
+          <span class="tag">AWS S3</span>
+          <span class="tag">AWS Glue</span>
+          <span class="tag">Spark MLlib</span>
+          <span class="tag">Amazon Athena</span>
+          <span class="tag">Amazon CloudWatch</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- 2 · ETA Prediction -->
+    <div class="project-card">
+      <div class="slider" data-index="0">
+        <div class="slider__track">
+          <img class="slider__img" src="public/projects/eta-prediction.png" alt="ETA Prediction project" />
+        </div>
+      </div>
+      <div class="card__body">
+        <p class="card__title">Armada: ETA Prediction Model, Replacing Google Maps API</p>
+        <p class="card__desc">Built and deployed a production-ready ML system that replaced reliance on Google Maps API with an in-house ETA prediction service, directly reducing operational costs. Compared multiple algorithms (Linear Regression, Random Forest, XGBoost), deployed the best model as a Flask API on AWS EC2 with Gunicorn + Nginx, and automated weekly retraining via AWS Glue to keep the model accurate with fresh data.</p>
+        <div class="card__tags">
+          <span class="tag">Python</span>
+          <span class="tag">Flask</span>
+          <span class="tag">Scikit-learn</span>
+          <span class="tag">XGBoost</span>
+          <span class="tag">AWS EC2</span>
+          <span class="tag">AWS S3</span>
+          <span class="tag">AWS Glue</span>
+          <span class="tag">Nginx</span>
+          <span class="tag">Gunicorn</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- 3 · Chfamma (slider) -->
+    <div class="project-card">
+      <div class="slider" data-index="0">
+        <div class="slider__track">
+          <img class="slider__img" src="public/projects/chfamma_1.png" alt="Chfamma screenshot 1" />
+          <img class="slider__img" src="public/projects/chfamma_2.png" alt="Chfamma screenshot 2" />
+        </div>
+        <button class="slider__btn slider__btn--prev" aria-label="Previous">
+          <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="#000" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+            <polyline points="15 18 9 12 15 6"/>
+          </svg>
+        </button>
+        <button class="slider__btn slider__btn--next" aria-label="Next">
+          <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="#000" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+            <polyline points="9 18 15 12 9 6"/>
+          </svg>
+        </button>
+        <div class="slider__dots">
+          <div class="slider__dot slider__dot--active"></div>
+          <div class="slider__dot"></div>
+        </div>
+      </div>
+      <div class="card__body">
+        <p class="card__title">Chfamma?: Real-Time Tunisian Data Platform</p>
+        <p class="card__desc">Built a live data platform displaying real-time sports, weather, and tourism data on an interactive Tunisian map. Engineered a full scraping pipeline (BeautifulSoup, Requests) feeding into MongoDB, refreshed hourly via AWS Glue jobs, exposed through a Flask REST API on AWS EC2, and visualized with React + Leaflet.js. Deployed frontend on Vercel with automated backend refresh.</p>
+        <div class="card__tags">
+          <span class="tag">React.js</span>
+          <span class="tag">Flask</span>
+          <span class="tag">Node.js</span>
+          <span class="tag">MongoDB</span>
+          <span class="tag">Leaflet.js</span>
+          <span class="tag">Vercel</span>
+          <span class="tag">AWS EC2</span>
+          <span class="tag">AWS Glue</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- 4 · Analytics Dashboard (slider) -->
+    <div class="project-card">
+      <div class="slider" data-index="0">
+        <div class="slider__track">
+          <img class="slider__img" src="public/projects/analytics-dashboard_1.png" alt="Analytics dashboard screenshot 1" />
+          <img class="slider__img" src="public/projects/analytics-dashboard_2.png" alt="Analytics dashboard screenshot 2" />
+          <img class="slider__img" src="public/projects/analytics-dashboard_3.png" alt="Analytics dashboard screenshot 3" />
+        </div>
+        <button class="slider__btn slider__btn--prev" aria-label="Previous">
+          <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="#000" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+            <polyline points="15 18 9 12 15 6"/>
+          </svg>
+        </button>
+        <button class="slider__btn slider__btn--next" aria-label="Next">
+          <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="#000" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+            <polyline points="9 18 15 12 9 6"/>
+          </svg>
+        </button>
+        <div class="slider__dots">
+          <div class="slider__dot slider__dot--active"></div>
+          <div class="slider__dot"></div>
+          <div class="slider__dot"></div>
+        </div>
+      </div>
+      <div class="card__body">
+        <p class="card__title">Armada: Driver &amp; Company Performance Analytics</p>
+        <p class="card__desc">Developed a complete analytics system during the Armada internship that transformed raw delivery operations data into actionable business insights. Built interactive dashboards for driver KPI tracking (acceptance rate, response time, ETA compliance) and company-level performance metrics, empowering managers with data-driven tools for workforce optimization and operational decision-making.</p>
+        <div class="card__tags">
+          <span class="tag">React.js</span>
+          <span class="tag">Python</span>
+          <span class="tag">MongoDB</span>
+          <span class="tag">Vercel</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- 5 · Weather Forecasting -->
+    <div class="project-card">
+      <div class="slider" data-index="0">
+        <div class="slider__track">
+          <img class="slider__img" src="public/projects/weather-forecasting.png" alt="Weather Forecasting project" />
+        </div>
+      </div>
+      <div class="card__body">
+        <p class="card__title">Weather Forecasting with LSTM</p>
+        <p class="card__desc">Designed and trained a Long Short-Term Memory (LSTM) neural network to predict daily weather trends based on historical meteorological datasets. Covered the full ML lifecycle: data cleaning, feature engineering, model training, validation, and visualization of predictions vs actual outcomes.</p>
+        <div class="card__tags">
+          <span class="tag">Python</span>
+          <span class="tag">TensorFlow</span>
+          <span class="tag">Keras</span>
+          <span class="tag">NumPy</span>
+          <span class="tag">pandas</span>
+          <span class="tag">Matplotlib</span>
+          <span class="tag">Jupyter</span>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<!-- Lightbox -->
+<div id="lightbox" class="lightbox">
+  <button id="lightbox-close" class="lightbox__close" aria-label="Close">&#x2715;</button>
+  <img id="lightbox-img" class="lightbox__img" src="" alt="" />
+</div>
+</div>
+
+<script>
+  /* ── Lightbox ── */
+  var lightbox    = document.getElementById('lightbox');
+  var lightboxImg = document.getElementById('lightbox-img');
+
+  function openLightbox(src, alt) {
+    lightboxImg.src = src;
+    lightboxImg.alt = alt || '';
+    lightbox.classList.add('is-open');
+    document.body.style.overflow = 'hidden';
+  }
+
+  function closeLightbox() {
+    lightbox.classList.remove('is-open');
+    document.body.style.overflow = '';
+  }
+
+  document.getElementById('lightbox-close').addEventListener('click', closeLightbox);
+
+  lightbox.addEventListener('click', function(e) {
+    if (e.target === lightbox) closeLightbox();
+  });
+
+  document.addEventListener('keydown', function(e) {
+    if (e.key === 'Escape') closeLightbox();
+  });
+
+  /* ── Sliders ── */
+  document.querySelectorAll('.slider').forEach(function(slider) {
+    var track  = slider.querySelector('.slider__track');
+    var imgs   = slider.querySelectorAll('.slider__img');
+    var dots   = slider.querySelectorAll('.slider__dot');
+    var count  = imgs.length;
+    var idx    = 0;
+
+    if (count > 1) {
+      function goTo(n) {
+        idx = (n + count) % count;
+        track.style.transform = 'translateX(-' + idx * 100 + '%)';
+        dots.forEach(function(d, i) {
+          d.classList.toggle('slider__dot--active', i === idx);
+        });
+      }
+
+      slider.querySelector('.slider__btn--prev').addEventListener('click', function(e) {
+        e.stopPropagation();
+        goTo(idx - 1);
+      });
+      slider.querySelector('.slider__btn--next').addEventListener('click', function(e) {
+        e.stopPropagation();
+        goTo(idx + 1);
+      });
+
+      dots.forEach(function(dot, i) {
+        dot.addEventListener('click', function(e) {
+          e.stopPropagation();
+          goTo(i);
+        });
+      });
+    }
+
+    slider.addEventListener('click', function(e) {
+      if (e.target.closest('.slider__btn') || e.target.closest('.slider__dots')) return;
+      openLightbox(imgs[idx].src, imgs[idx].alt);
+    });
+  });
+</script>
+
+<script>
+  document.addEventListener('DOMContentLoaded', () => { document.getElementById('page-content').style.opacity = 1; });
+  document.querySelectorAll('nav a').forEach(link => {
+    link.addEventListener('click', function(e) {
+      e.preventDefault();
+      document.querySelectorAll('nav a').forEach(l => l.classList.remove('active', 'topnav__link--active'));
+      const targetLink = document.querySelector('nav a.topnav__link[href="' + this.getAttribute('href') + '"]') || this;
+      targetLink.classList.add('active');
+      const href = this.href;
+      document.getElementById('page-content').style.opacity = 0;
+      setTimeout(() => { window.location.href = href; }, 300);
+    });
+  });
+</script>
+
+</body>
+</html>

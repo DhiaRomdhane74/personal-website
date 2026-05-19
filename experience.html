@@ -1,0 +1,318 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 80 80'><rect x='10' y='10' width='8' height='20' rx='2' fill='%231a1a1a'/><rect x='10' y='10' width='20' height='8' rx='2' fill='%231a1a1a'/><rect x='10' y='50' width='8' height='20' rx='2' fill='%231a1a1a'/><rect x='10' y='62' width='20' height='8' rx='2' fill='%231a1a1a'/><rect x='62' y='10' width='8' height='20' rx='2' fill='%231a1a1a'/><rect x='50' y='10' width='20' height='8' rx='2' fill='%231a1a1a'/><rect x='62' y='50' width='8' height='20' rx='2' fill='%231a1a1a'/><rect x='50' y='62' width='20' height='8' rx='2' fill='%231a1a1a'/><text x='40' y='48' text-anchor='middle' font-family='Georgia,serif' font-size='26' font-weight='700' fill='%231a1a1a'>DR</text></svg>">
+  <title>Experience | Dhia</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    * { color: #000000 !important; }
+
+    :root {
+      --bg:            #fdf6ec;
+      --border:        rgba(0, 0, 0, 0.12);
+      --accent:        #246BFE;
+      --font:          'Inter', sans-serif;
+    }
+
+    html, body {
+      font-family: var(--font);
+      background-color: var(--bg);
+      min-height: 100vh;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    body { padding-top: 84px; }
+
+    .topnav {
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      z-index: 1000;
+      display: flex;
+      justify-content: flex-end;
+      align-items: center;
+      gap: 2.5rem;
+      padding: 1.25rem 3rem;
+      background: #fdf6ec;
+    }
+
+    .topnav__link {
+      font-size: 0.875rem;
+      font-weight: 500;
+      text-decoration: none;
+      letter-spacing: 0.01em;
+      opacity: 0.45;
+      transition: opacity 0.15s ease;
+    }
+
+    .topnav__link:hover { opacity: 1; }
+
+    .topnav__link--active,
+    nav a.active {
+      opacity: 1;
+      font-weight: 700;
+      text-decoration: underline;
+      text-underline-offset: 4px;
+      text-decoration-thickness: 1.5px;
+    }
+
+    .experience-section {
+      max-width: 860px;
+      margin: 0 auto;
+      padding: 3rem 1.25rem 5rem;
+    }
+
+    .experience-section__heading {
+      font-size: 2.5rem;
+      font-weight: 700;
+      letter-spacing: -0.03em;
+      margin-bottom: 3rem;
+      padding-bottom: 1rem;
+      border-bottom: 1.5px solid rgba(0, 0, 0, 0.1);
+    }
+
+    /* ── Timeline ─────────────────────────────────────────── */
+    .timeline {
+      position: relative;
+      display: flex;
+      flex-direction: column;
+      gap: 0;
+      padding-left: 2rem;
+    }
+
+    .timeline::before {
+      content: '';
+      position: absolute;
+      left: 4px;
+      top: 8px;
+      bottom: 8px;
+      width: 2px;
+      background: var(--border);
+    }
+
+    .timeline-item {
+      position: relative;
+      padding: 0 0 3rem 2rem;
+    }
+
+    .timeline-item:last-child {
+      padding-bottom: 0;
+    }
+
+    .timeline-item::before {
+      content: '';
+      position: absolute;
+      left: -2rem;
+      top: 8px;
+      width: 10px;
+      height: 10px;
+      border-radius: 50%;
+      background: var(--accent);
+      border: 2px solid var(--bg);
+      outline: 1.5px solid var(--accent);
+    }
+
+    .timeline-item__header {
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+    }
+
+    .timeline-item__logo {
+      width: 48px;
+      height: 48px;
+      object-fit: contain;
+      flex-shrink: 0;
+      border-radius: 8px;
+    }
+
+    .timeline-item__company {
+      font-size: 1.25rem;
+      font-weight: 700;
+      letter-spacing: -0.02em;
+      line-height: 1.2;
+    }
+
+    .timeline-item__meta {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.25rem 1.25rem;
+      margin-top: 0.35rem;
+    }
+
+    .timeline-item__role {
+      font-size: 0.9375rem;
+      font-weight: 500;
+    }
+
+    .timeline-item__sub {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.25rem 1.25rem;
+      margin-top: 0.2rem;
+    }
+
+    .timeline-item__location,
+    .timeline-item__duration {
+      font-size: 0.875rem;
+      font-weight: 400;
+      opacity: 0.55;
+    }
+
+    .timeline-item__desc {
+      margin-top: 0.875rem;
+      font-size: 0.9375rem;
+      line-height: 1.75;
+    }
+
+    .timeline-item__bullets {
+      margin-top: 0.875rem;
+      display: flex;
+      flex-direction: column;
+      gap: 0.5rem;
+      list-style: none;
+      padding: 0;
+    }
+
+    .timeline-item__bullets li {
+      position: relative;
+      padding-left: 1.25rem;
+      font-size: 0.9375rem;
+      line-height: 1.7;
+    }
+
+    .timeline-item__bullets li::before {
+      content: '–';
+      position: absolute;
+      left: 0;
+      opacity: 0.45;
+    }
+
+    @media (max-width: 560px) {
+      .topnav { padding: 1rem 1.25rem; gap: 1.5rem; }
+      .timeline { padding-left: 1.25rem; }
+      .timeline-item { padding-left: 1.5rem; }
+    }
+
+    #page-content { opacity: 0; transition: opacity 0.3s ease; }
+  </style>
+</head>
+<body>
+
+<nav class="topnav">
+  <a href="index.html" style="margin-right:auto;flex-shrink:0;display:block;">
+  <svg width="44" height="44" viewBox="0 0 80 80">
+    <rect x="10" y="10" width="8" height="20" rx="2" fill="#1a1a1a"/>
+    <rect x="10" y="10" width="20" height="8" rx="2" fill="#1a1a1a"/>
+    <rect x="10" y="50" width="8" height="20" rx="2" fill="#1a1a1a"/>
+    <rect x="10" y="62" width="20" height="8" rx="2" fill="#1a1a1a"/>
+    <rect x="62" y="10" width="8" height="20" rx="2" fill="#1a1a1a"/>
+    <rect x="50" y="10" width="20" height="8" rx="2" fill="#1a1a1a"/>
+    <rect x="62" y="50" width="8" height="20" rx="2" fill="#1a1a1a"/>
+    <rect x="50" y="62" width="20" height="8" rx="2" fill="#1a1a1a"/>
+    <text x="40" y="48" text-anchor="middle" font-family="Georgia, serif" font-size="26" font-weight="700" fill="#1a1a1a">DR</text>
+  </svg>
+  </a>
+  <a href="index.html" class="topnav__link">Home</a>
+  <a href="experience.html" class="topnav__link topnav__link--active active">Experience</a>
+  <a href="projects.html" class="topnav__link">Projects</a>
+  <a href="skills.html" class="topnav__link">Skills</a>
+</nav>
+
+<div id="page-content">
+<section class="experience-section">
+  <h1 class="experience-section__heading">Experience</h1>
+
+  <div class="timeline">
+
+    <!-- SYNAOS -->
+    <div class="timeline-item">
+      <div class="timeline-item__header">
+        <img class="timeline-item__logo" src="public/Companies/synaos_logo.jfif" alt="SYNAOS GmbH" />
+        <div>
+          <p class="timeline-item__company">SYNAOS GmbH</p>
+          <div class="timeline-item__meta">
+            <span class="timeline-item__role">Data Engineering &amp; Analytics Intern</span>
+          </div>
+          <div class="timeline-item__sub">
+            <span class="timeline-item__location">Hannover, Germany</span>
+            <span class="timeline-item__duration">March 2026 – August 2026</span>
+          </div>
+        </div>
+      </div>
+      <p class="timeline-item__desc">
+        Working as a Data Engineering &amp; Analytics Intern, working with Prometheus, Thanos, Grafana, Kubernetes on AWS EKS, and GitLab CI/CD.
+      </p>
+    </div>
+
+    <!-- Armada Delivery Solutions -->
+    <div class="timeline-item">
+      <div class="timeline-item__header">
+        <img class="timeline-item__logo" src="public/Companies/armada_delivery_solutions_logo.jfif" alt="Armada Delivery Solutions" />
+        <div>
+          <p class="timeline-item__company">Armada Delivery Solutions</p>
+          <div class="timeline-item__meta">
+            <span class="timeline-item__role">Data Engineering &amp; Analytics Intern</span>
+          </div>
+          <div class="timeline-item__sub">
+            <span class="timeline-item__location">Kuwait</span>
+            <span class="timeline-item__duration">June 2025 – August 2025</span>
+          </div>
+        </div>
+      </div>
+      <ul class="timeline-item__bullets">
+        <li>Developed an ETA prediction model to estimate driver travel times between two locations, replacing reliance on Google Maps</li>
+        <li>Designed and automated a full data pipeline to continuously retrain and update the model with new incoming trip data</li>
+        <li>Built an interactive dashboard to monitor real-time driver and company performance</li>
+      </ul>
+    </div>
+
+    <!-- Enova Robotics -->
+    <div class="timeline-item">
+      <div class="timeline-item__header">
+        <img class="timeline-item__logo" src="public/Companies/enovarobotics_logo.jfif" alt="Enova Robotics" />
+        <div>
+          <p class="timeline-item__company">Enova Robotics</p>
+          <div class="timeline-item__meta">
+            <span class="timeline-item__role">Data Science Intern</span>
+          </div>
+          <div class="timeline-item__sub">
+            <span class="timeline-item__location">Tunisia</span>
+            <span class="timeline-item__duration">June 2024 – August 2024</span>
+          </div>
+        </div>
+      </div>
+      <ul class="timeline-item__bullets">
+        <li>Built and trained a machine learning model capable of detecting prohibited and high-risk items in real time</li>
+        <li>Collected, cleaned, and augmented image datasets from multiple online sources and APIs</li>
+        <li>Integrated the model into a surveillance robot</li>
+      </ul>
+    </div>
+
+  </div>
+</section>
+</div>
+
+<script>
+  document.addEventListener('DOMContentLoaded', () => { document.getElementById('page-content').style.opacity = 1; });
+  document.querySelectorAll('nav a').forEach(link => {
+    link.addEventListener('click', function(e) {
+      e.preventDefault();
+      document.querySelectorAll('nav a').forEach(l => l.classList.remove('active', 'topnav__link--active'));
+      const targetLink = document.querySelector('nav a.topnav__link[href="' + this.getAttribute('href') + '"]') || this;
+      targetLink.classList.add('active');
+      const href = this.href;
+      document.getElementById('page-content').style.opacity = 0;
+      setTimeout(() => { window.location.href = href; }, 300);
+    });
+  });
+</script>
+
+</body>
+</html>

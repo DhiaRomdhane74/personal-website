@@ -1,0 +1,171 @@
+/* ─── Navbar shell ─────────────────────────────────────────── */
+.navbar {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 1000;
+  height: 64px;
+  background: #f2eae3;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.08);
+  transition: background 0.25s ease, backdrop-filter 0.25s ease;
+}
+
+.navbar--scrolled {
+  background: rgba(242, 234, 227, 0.85);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+}
+
+/* ─── Inner layout ─────────────────────────────────────────── */
+.navbar__inner {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 2rem;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+/* ─── Logo ─────────────────────────────────────────────────── */
+.navbar__logo {
+  font-size: 18px;
+  font-weight: 700;
+  color: #000000;
+  letter-spacing: -0.01em;
+  white-space: nowrap;
+}
+
+.navbar__logo:hover {
+  color: #000000;
+}
+
+/* ─── Nav links (desktop) ──────────────────────────────────── */
+.navbar__nav {
+  display: flex;
+  align-items: center;
+  gap: 2.25rem;
+}
+
+.navbar__link {
+  font-size: 14px;
+  font-weight: 700;
+  color: #000000;
+  position: relative;
+  padding-bottom: 2px;
+  transition: color 0.2s ease;
+}
+
+/* Animated underline */
+.navbar__link::after {
+  content: '';
+  position: absolute;
+  bottom: -2px;
+  left: 0;
+  width: 0;
+  height: 2px;
+  background: #246BFE;
+  border-radius: 1px;
+  transition: width 0.2s ease;
+}
+
+.navbar__link:hover {
+  color: #246BFE;
+}
+
+.navbar__link--active {
+  color: #246BFE;
+}
+
+.navbar__link--active::after {
+  width: 100%;
+}
+
+/* ─── Hamburger (hidden desktop) ───────────────────────────── */
+.navbar__burger {
+  display: none;
+  flex-direction: column;
+  justify-content: center;
+  gap: 5px;
+  width: 36px;
+  height: 36px;
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 0;
+  flex-shrink: 0;
+}
+
+.navbar__burger-line {
+  display: block;
+  width: 22px;
+  height: 2px;
+  background: #000000;
+  border-radius: 2px;
+  transition: transform 0.25s ease, opacity 0.2s ease;
+}
+
+.navbar__burger--open .navbar__burger-line:nth-child(1) {
+  transform: translateY(7px) rotate(45deg);
+}
+
+.navbar__burger--open .navbar__burger-line:nth-child(2) {
+  opacity: 0;
+}
+
+.navbar__burger--open .navbar__burger-line:nth-child(3) {
+  transform: translateY(-7px) rotate(-45deg);
+}
+
+/* ─── Mobile ────────────────────────────────────────────────── */
+@media (max-width: 768px) {
+  .navbar {
+    height: 56px;
+  }
+
+  .navbar__burger {
+    display: flex;
+  }
+
+  .navbar__nav {
+    position: fixed;
+    top: 56px;
+    left: 0;
+    right: 0;
+    background: #f2eae3;
+    border-bottom: 1px solid rgba(0, 0, 0, 0.08);
+    flex-direction: column;
+    align-items: stretch;
+    gap: 0;
+    padding: 0 2rem;
+    transform: translateY(-8px);
+    opacity: 0;
+    pointer-events: none;
+    transition: transform 0.25s ease, opacity 0.25s ease;
+  }
+
+  .navbar__nav--open {
+    transform: translateY(0);
+    opacity: 1;
+    pointer-events: auto;
+  }
+
+  .navbar__link {
+    display: flex;
+    align-items: center;
+    height: 48px;
+    font-size: 15px;
+    border-bottom: 1px solid rgba(0, 0, 0, 0.06);
+    padding-bottom: 0;
+  }
+
+  .navbar__link:last-child {
+    border-bottom: none;
+  }
+
+  /* Keep underline indicator working on mobile */
+  .navbar__link::after {
+    bottom: 6px;
+  }
+}

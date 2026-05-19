@@ -1,0 +1,246 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 80 80'><rect x='10' y='10' width='8' height='20' rx='2' fill='%231a1a1a'/><rect x='10' y='10' width='20' height='8' rx='2' fill='%231a1a1a'/><rect x='10' y='50' width='8' height='20' rx='2' fill='%231a1a1a'/><rect x='10' y='62' width='20' height='8' rx='2' fill='%231a1a1a'/><rect x='62' y='10' width='8' height='20' rx='2' fill='%231a1a1a'/><rect x='50' y='10' width='20' height='8' rx='2' fill='%231a1a1a'/><rect x='62' y='50' width='8' height='20' rx='2' fill='%231a1a1a'/><rect x='50' y='62' width='20' height='8' rx='2' fill='%231a1a1a'/><text x='40' y='48' text-anchor='middle' font-family='Georgia,serif' font-size='26' font-weight='700' fill='%231a1a1a'>DR</text></svg>">
+  <title>Skills | Dhia</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    * { color: #000000 !important; }
+
+    :root {
+      --bg:   #fdf6ec;
+      --font: 'Inter', sans-serif;
+    }
+
+    html, body {
+      font-family: var(--font);
+      background-color: var(--bg);
+      min-height: 100vh;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    body { padding-top: 84px; }
+
+    .topnav {
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      z-index: 1000;
+      display: flex;
+      justify-content: flex-end;
+      align-items: center;
+      gap: 2.5rem;
+      padding: 1.25rem 3rem;
+      background: #fdf6ec;
+    }
+
+    .topnav__link {
+      font-size: 0.875rem;
+      font-weight: 500;
+      text-decoration: none;
+      letter-spacing: 0.01em;
+      opacity: 0.45;
+      transition: opacity 0.15s ease;
+    }
+
+    .topnav__link:hover { opacity: 1; }
+
+    .topnav__link--active,
+    nav a.active {
+      opacity: 1;
+      font-weight: 700;
+      text-decoration: underline;
+      text-underline-offset: 4px;
+      text-decoration-thickness: 1.5px;
+    }
+
+    .skills-section {
+      max-width: 860px;
+      margin: 0 auto;
+      padding: 3rem 1.25rem 5rem;
+    }
+
+    .skills-section__heading {
+      font-size: 2.5rem;
+      font-weight: 700;
+      letter-spacing: -0.03em;
+      margin-bottom: 2rem;
+      padding-bottom: 1rem;
+      border-bottom: 1.5px solid rgba(0, 0, 0, 0.1);
+    }
+
+    .skill-cards {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+      gap: 1rem;
+    }
+
+    .skill-card {
+      background: rgba(255, 255, 255, 0.55);
+      border: 1px solid rgba(0, 0, 0, 0.1);
+      border-radius: 12px;
+      padding: 1.25rem 1.375rem 1.375rem;
+      display: flex;
+      flex-direction: column;
+      gap: 0.875rem;
+    }
+
+    .skill-card__title {
+      font-size: 0.85rem;
+      font-weight: 700;
+      letter-spacing: 0.04em;
+      text-transform: uppercase;
+    }
+
+    .skill-card__tags { display: flex; flex-wrap: wrap; gap: 0.375rem; }
+
+    .skill-pill {
+      padding: 0.275rem 0.65rem;
+      background: rgba(0, 0, 0, 0.05);
+      border: 1px solid rgba(0, 0, 0, 0.1);
+      border-radius: 100px;
+      font-size: 0.775rem;
+      font-weight: 500;
+      white-space: nowrap;
+    }
+
+    @media (max-width: 560px) {
+      .topnav { padding: 1rem 1.25rem; gap: 1.5rem; }
+      .skill-cards { grid-template-columns: 1fr; }
+    }
+
+    #page-content { opacity: 0; transition: opacity 0.3s ease; }
+  </style>
+</head>
+<body>
+
+<nav class="topnav">
+  <a href="index.html" style="margin-right:auto;flex-shrink:0;display:block;">
+  <svg width="44" height="44" viewBox="0 0 80 80">
+    <rect x="10" y="10" width="8" height="20" rx="2" fill="#1a1a1a"/>
+    <rect x="10" y="10" width="20" height="8" rx="2" fill="#1a1a1a"/>
+    <rect x="10" y="50" width="8" height="20" rx="2" fill="#1a1a1a"/>
+    <rect x="10" y="62" width="20" height="8" rx="2" fill="#1a1a1a"/>
+    <rect x="62" y="10" width="8" height="20" rx="2" fill="#1a1a1a"/>
+    <rect x="50" y="10" width="20" height="8" rx="2" fill="#1a1a1a"/>
+    <rect x="62" y="50" width="8" height="20" rx="2" fill="#1a1a1a"/>
+    <rect x="50" y="62" width="20" height="8" rx="2" fill="#1a1a1a"/>
+    <text x="40" y="48" text-anchor="middle" font-family="Georgia, serif" font-size="26" font-weight="700" fill="#1a1a1a">DR</text>
+  </svg>
+  </a>
+  <a href="index.html" class="topnav__link">Home</a>
+  <a href="experience.html" class="topnav__link">Experience</a>
+  <a href="projects.html" class="topnav__link">Projects</a>
+  <a href="skills.html" class="topnav__link topnav__link--active active">Skills</a>
+</nav>
+
+<div id="page-content">
+<section class="skills-section">
+  <h1 class="skills-section__heading">Skills</h1>
+  <div class="skill-cards">
+
+    <div class="skill-card">
+      <span class="skill-card__title">Data Engineering &amp; Pipelines</span>
+      <div class="skill-card__tags">
+        <span class="skill-pill">Spark / PySpark</span>
+        <span class="skill-pill">Apache Airflow</span>
+        <span class="skill-pill">AWS Glue</span>
+        <span class="skill-pill">dbt</span>
+        <span class="skill-pill">ETL/ELT</span>
+        <span class="skill-pill">Kafka</span>
+      </div>
+    </div>
+
+    <div class="skill-card">
+      <span class="skill-card__title">Cloud &amp; Infrastructure</span>
+      <div class="skill-card__tags">
+        <span class="skill-pill">AWS (EMR, EC2, S3, Athena, EKS)</span>
+        <span class="skill-pill">Kubernetes</span>
+        <span class="skill-pill">Docker</span>
+        <span class="skill-pill">Helm</span>
+        <span class="skill-pill">ArgoCD</span>
+        <span class="skill-pill">GitOps</span>
+        <span class="skill-pill">GitLab CI/CD</span>
+      </div>
+    </div>
+
+    <div class="skill-card">
+      <span class="skill-card__title">Observability &amp; Monitoring</span>
+      <div class="skill-card__tags">
+        <span class="skill-pill">Prometheus</span>
+        <span class="skill-pill">PromQL</span>
+        <span class="skill-pill">Thanos</span>
+        <span class="skill-pill">Grafana</span>
+        <span class="skill-pill">OpsGenie</span>
+      </div>
+    </div>
+
+    <div class="skill-card">
+      <span class="skill-card__title">Databases &amp; Storage</span>
+      <div class="skill-card__tags">
+        <span class="skill-pill">SQL</span>
+        <span class="skill-pill">PostgreSQL</span>
+        <span class="skill-pill">Snowflake</span>
+        <span class="skill-pill">MongoDB</span>
+        <span class="skill-pill">BigQuery</span>
+      </div>
+    </div>
+
+    <div class="skill-card">
+      <span class="skill-card__title">ML &amp; AI</span>
+      <div class="skill-card__tags">
+        <span class="skill-pill">scikit-learn</span>
+        <span class="skill-pill">Clustering</span>
+        <span class="skill-pill">Classification</span>
+        <span class="skill-pill">Regression</span>
+        <span class="skill-pill">TensorFlow / Keras</span>
+        <span class="skill-pill">Spark MLlib</span>
+        <span class="skill-pill">Time-series forecasting</span>
+      </div>
+    </div>
+
+    <div class="skill-card">
+      <span class="skill-card__title">BI &amp; Visualization</span>
+      <div class="skill-card__tags">
+        <span class="skill-pill">Power BI</span>
+        <span class="skill-pill">Tableau</span>
+      </div>
+    </div>
+
+    <div class="skill-card">
+      <span class="skill-card__title">Programming Languages</span>
+      <div class="skill-card__tags">
+        <span class="skill-pill">Python</span>
+        <span class="skill-pill">Golang</span>
+        <span class="skill-pill">SQL</span>
+        <span class="skill-pill">Java</span>
+      </div>
+    </div>
+
+  </div>
+</section>
+</div>
+
+<script>
+  document.addEventListener('DOMContentLoaded', () => { document.getElementById('page-content').style.opacity = 1; });
+  document.querySelectorAll('nav a').forEach(link => {
+    link.addEventListener('click', function(e) {
+      e.preventDefault();
+      document.querySelectorAll('nav a').forEach(l => l.classList.remove('active', 'topnav__link--active'));
+      const targetLink = document.querySelector('nav a.topnav__link[href="' + this.getAttribute('href') + '"]') || this;
+      targetLink.classList.add('active');
+      const href = this.href;
+      document.getElementById('page-content').style.opacity = 0;
+      setTimeout(() => { window.location.href = href; }, 300);
+    });
+  });
+</script>
+
+</body>
+</html>
