@@ -24,8 +24,10 @@
       -webkit-font-smoothing: antialiased;
     }
 
-    html { overflow-y: scroll; scrollbar-width: none; }
-    html::-webkit-scrollbar { display: none; }
+    html { overflow-y: scroll; scrollbar-color: transparent transparent; }
+    html::-webkit-scrollbar { width: 15px; }
+    html::-webkit-scrollbar-track { background: transparent; }
+    html::-webkit-scrollbar-thumb { background: transparent; }
 
     body { padding-top: 84px; }
 
