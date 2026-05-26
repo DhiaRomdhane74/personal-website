@@ -10,12 +10,8 @@ const SKILLS = [
     tags: ['AWS EKS', 'Kubernetes', 'Kafka', 'Docker'],
   },
   {
-    category: 'AI & Machine Learning',
-    tags: ['PyTorch', 'TensorFlow', 'Keras', 'scikit-learn', 'Deep Learning', 'AI Agents'],
-  },
-  {
-    category: 'Data Science & Analytics',
-    tags: ['Power BI', 'Tableau', 'pandas', 'Matplotlib', 'Seaborn'],
+    category: 'ML & Analytics',
+    tags: ['scikit-learn', 'Spark MLlib', 'Deep Learning', 'Time-series forecasting', 'Power BI', 'Tableau', 'Matplotlib', 'Seaborn'],
   },
   {
     category: 'Programming',
