@@ -249,8 +249,8 @@
         </div>
       </div>
       <ul class="timeline-item__bullets">
-        <li>Built an adaptive alerting system on top of the core monitoring stack (Prometheus, Thanos, Grafana) that learns each customer's normal metric behavior, detects genuine anomalies, and continuously adjusts alert limits through an automated feedback loop, replacing static, manually-set rules that led to false positives and missed incidents</li>
-        <li>Created a configuration tool for profiling metrics and calibrating these limits, which auto-generates deployment artifacts; shipped the complete solution to production Kubernetes clusters using a GitOps workflow</li>
+        <li>Built an adaptive alerting system on top of the core monitoring stack (Prometheus, Thanos, Grafana) that learns each customer's normal metric behavior, detects genuine anomalies, and continuously adjusts alert limits from recent history, replacing static, manually set rules that led to false positives and missed incidents</li>
+        <li>Created a configuration tool for profiling metrics and calibrating these limits, which auto-generates deployment artifacts; shipped the complete solution to production Kubernetes clusters using a GitOps workflow, now running live across 26 customer tenants</li>
       </ul>
     </div>
 
