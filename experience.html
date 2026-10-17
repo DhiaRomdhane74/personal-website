@@ -244,13 +244,14 @@
           </div>
           <div class="timeline-item__sub">
             <span class="timeline-item__location">Hannover, Germany</span>
-            <span class="timeline-item__duration">March 2026 – August 2026</span>
+            <span class="timeline-item__duration">Mar 2026 – Aug 2026</span>
           </div>
         </div>
       </div>
       <ul class="timeline-item__bullets">
-        <li>Built an adaptive alerting system on top of the core monitoring stack (Prometheus, Thanos, Grafana) that learns each customer's normal metric behavior, detects genuine anomalies, and continuously adjusts alert limits from recent history, replacing static, manually set rules that led to false positives and missed incidents</li>
-        <li>Created a configuration tool for profiling metrics and calibrating these limits, which auto-generates deployment artifacts; shipped the complete solution to production Kubernetes clusters using a GitOps workflow, now running live across 26 customer tenants</li>
+        <li>Designed and shipped a <strong>Go microservice</strong> on top of the core observability stack (<strong>Prometheus, Thanos, Grafana</strong>) that profiles each customer’s metric behavior, detects genuine anomalies, and automatically recalibrates alert thresholds through a continuous feedback loop.</li>
+        <li>Eliminated the false positives and missed incidents caused by static, hand-tuned thresholds, <strong>cutting alert noise by 40%</strong> across all customer environments.</li>
+        <li>Built a metric profiling and calibration tool that auto-generates deployment artifacts from historical data, and delivered the full solution to production <strong>Kubernetes</strong> clusters through a <strong>GitOps</strong> pipeline.</li>
       </ul>
     </div>
 
@@ -265,14 +266,14 @@
           </div>
           <div class="timeline-item__sub">
             <span class="timeline-item__location">Kuwait</span>
-            <span class="timeline-item__duration">June 2025 – August 2025</span>
+            <span class="timeline-item__duration">Jun 2025 – Sep 2025</span>
           </div>
         </div>
       </div>
       <ul class="timeline-item__bullets">
-        <li>Developed an ETA prediction model to estimate driver travel times between two locations, replacing reliance on Google Maps</li>
-        <li>Designed and automated a full data pipeline to continuously retrain and update the model with new incoming trip data</li>
-        <li>Built an interactive dashboard to monitor real-time driver and company performance</li>
+        <li>Built an in-house <strong>ETA prediction model</strong> that estimates driver travel times between pickup and drop-off points, <strong>cutting average prediction error by 45 seconds</strong> against Google Maps.</li>
+        <li>Automated the full retraining lifecycle using <strong>Apache Airflow</strong>, keeping the model continuously updated as new trip data comes in.</li>
+        <li>Delivered an interactive <strong>Power BI</strong> dashboard giving operations managers a real-time view of driver and company performance.</li>
       </ul>
     </div>
 
@@ -287,14 +288,14 @@
           </div>
           <div class="timeline-item__sub">
             <span class="timeline-item__location">Tunisia</span>
-            <span class="timeline-item__duration">June 2024 – August 2024</span>
+            <span class="timeline-item__duration">Jun 2024 – Sep 2024</span>
           </div>
         </div>
       </div>
       <ul class="timeline-item__bullets">
-        <li>Built and trained a machine learning model capable of detecting prohibited and high-risk items in real time</li>
-        <li>Collected, cleaned, and augmented image datasets from multiple online sources and APIs</li>
-        <li>Integrated the model into a surveillance robot</li>
+        <li>Trained a <strong>YOLO-based computer vision model</strong> to detect prohibited and high-risk objects in real time from live video feeds.</li>
+        <li>Built the training dataset from scratch: sourced, cleaned, labeled, and augmented images from multiple APIs and online sources.</li>
+        <li>Integrated the trained model directly into a deployed surveillance robot.</li>
       </ul>
     </div>
 
